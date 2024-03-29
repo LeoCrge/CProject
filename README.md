@@ -3,8 +3,8 @@
 **Project Name:** CDataframe - Implementation of a Double-Linked List in C
 
 **Team Members:**
-- [Insert Team Member 1 Name]
-- [Insert Team Member 2 Name]
+- Hector
+- Loris
 
 **Project Description:**
 The CDataframe project aims to implement a double-linked list in C language, specifically designed for storing integer data in columns. Each column consists of a title and an array of integers. This structure allows for efficient storage, retrieval, addition, deletion, and movement of columns or rows within the dataframe.
