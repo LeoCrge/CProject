@@ -88,3 +88,53 @@ int num_occurrences (COLUMN*col, int x){
 }
 
 // Value present at position x
+int value_at_x (COLUMN*col, int x){
+    if (col==NULL||x<0||x>=col->logical_size){
+        printf("Invalid position");
+        exit(EXIT_FAILURE);
+    }
+    return col->data[x];
+}
+
+// Number of values greater than x
+int val_greater_x (COLUMN*col, int x){
+    int count = 0;
+    if (col == NULL){
+        return 0;
+    }
+    for (int i=0; i<col->logical_size; i++){
+        if (x<col->data[i]){
+            count++;
+        }
+
+    }
+    return count;
+}
+
+// Number of values smaller than x
+int val_smaller_than (COLUMN*col, int x){
+    int count=0;
+    if (col==NULL){
+        return 0;
+    }
+    for (int i=0; i<col->logical_size; i++){
+        if (x>col->data[i]){
+            count++;
+        }
+    }
+    return count;
+}
+
+// Number of values equal to x
+int values_equal_to (COLUMN*col, int x){
+    int count=0;
+    if (col==NULL){
+        return 0;
+    }
+    for (int i=0; i<col->logical_size; i++){
+        if (x==col->data[i]){
+            count++;
+        }
+    }
+    return count;
+}
