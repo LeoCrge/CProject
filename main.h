@@ -163,7 +163,7 @@ CDataframe *create_dataframe(int num_columns, int max_rows){
 }
 
 // Function to fill the CDataframe with user input
-void fill_dataframe_user_input(CDATAFRAME *dataframe) {
+void fill_dataframe_user_input(CDataframe*dataframe) {
     if (!dataframe) return;
     for (int i = 0; i < dataframe->num_columns; i++) {
         COLUMN *col = dataframe->columns[i];
@@ -202,7 +202,7 @@ void display_dataframe(CDataframe *dataframe){
 }
 
 // Function to display a part of the CDataframe rows according to a user-provided limit
-void display_partial_rows(CDATAFRAME *dataframe, int limit) {
+void display_partial_rows(CDataframe *dataframe, int limit) {
     if (!dataframe || limit <= 0) return;
 
     printf("Partial CDataframe (first %d rows):\n", limit);
@@ -216,7 +216,7 @@ void display_partial_rows(CDATAFRAME *dataframe, int limit) {
 }
 
 // Function to display a part of the columns of the CDataframe according to a limit supplied by the user
-void display_partial_columns(CDATAFRAME *dataframe, int limit) {
+void display_partial_columns(CDataframe *dataframe, int limit) {
     if (!dataframe || limit <= 0) return;
 
     printf("Partial CDataframe (first %d columns):\n", limit);
@@ -227,7 +227,7 @@ void display_partial_columns(CDATAFRAME *dataframe, int limit) {
 }
 
 // Function to search for a value in the CDataframe
-int search_value(CDATAFRAME *dataframe, int value) {
+int search_value(CDataframe *dataframe, int value) {
     if (!dataframe) return 0;
 
     int count = 0;
