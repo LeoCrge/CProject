@@ -18,13 +18,6 @@ typedef struct {
     int logical_size;
 } COLUMN;
 
-typedef struct {
-    COLUMN **columns;
-    int num_columns;
-    int max_rows;
-    int num_rows;
-} CDataframe;
-
 // Function 4.1.1
 COLUMN *create_column(char *title){
     COLUMN *col = (COLUMN *)malloc(sizeof(COLUMN));
@@ -151,7 +144,15 @@ int values_equal_to (COLUMN*col, int x){
 
 // Functions from part 4.2
 
-// Creation of a free data frame
+
+typedef struct {
+    COLUMN **columns;
+    int num_columns;
+    int max_rows;
+    int num_rows;
+} CDataframe;
+
+// Creation of a free dataframe
 
 CDataframe *create_dataframe(int num_columns, int max_rows){
     CDataframe *dataframe = (CDataframe *)malloc(sizeof(CDataframe));
@@ -170,8 +171,34 @@ CDataframe *create_dataframe(int num_columns, int max_rows){
     return dataframe;
 }
 
+// Hard filling of the created dataframe
 
+void hard_fill_dataframe (CDataframe *dataframe){
+    int val;
+    if (dataframe == NULL){
+        return;
+    }
+    for (int i=0; i<dataframe->num_columns; i++){
+        for (int j=0; j<dataframe->max_rows; j++) {
+            printf("Enter the value at column %d and row %d \n", i+1, j+1);
+            scanf("%d", &val);
+            insert_value(dataframe->columns[i], val);
+        }
+    }
+}
 
+// Display of the dataframe
+
+void display_dataframe(CDataframe *dataframe){
+    if (dataframe == NULL){
+        return;
+    }
+    for (int i=0; i<dataframe->num_columns; i++){
+        for (int j=0; j<dataframe->max_rows; j++){
+            printf("[%d] [%d] %d\n",i+1, j+1, dataframe->columns[i]->data[j]);
+        }
+    }
+}
 
 
 
