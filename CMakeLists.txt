@@ -14,4 +14,5 @@ add_executable(CProject
         column/column.h
         list/list.c
         list/list.h
-        main.c)
+        main.c
+)
