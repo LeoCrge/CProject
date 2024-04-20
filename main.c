@@ -6,8 +6,8 @@
 
 // Structure definition for a column
 typedef struct COLUMN;
-// Structure definition for a CDataframe
-typedef struct CDataframe ;
+// Structure definition for a CDATAFRAME
+typedef struct CDATAFRAME;
 
 // Function prototypes for column operations
 COLUMN *create_column(char *title);
@@ -16,8 +16,8 @@ void delete_column(COLUMN **col);
 void print_col(COLUMN *col);
 
 
-// Function prototypes for CDataframe operations
-CDATAFRAME *create_dataframe();
+// Function prototypes for CDATAFRAME operations
+CDATAFRAME *create_dataframe(int num_columns, int max_rows);
 int num_occurrences (COLUMN*col, int x);
 int value_at_x (COLUMN*col, int x);
 int val_greater_x (COLUMN*col, int x);

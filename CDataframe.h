@@ -16,11 +16,11 @@ typedef struct {
     int num_columns;
     int max_rows;
     int num_rows;
-} CDataframe;
+} CDATAFRAME;
 
 // Creation of a free dataframe
-CDataframe *create_dataframe(int num_columns, int max_rows){
-    CDataframe *dataframe = (CDataframe *)malloc(sizeof(CDataframe));
+CDATAFRAME *create_dataframe(int num_columns, int max_rows){
+    CDATAFRAME *dataframe = (CDATAFRAME *)malloc(sizeof(CDATAFRAME));
     if (dataframe == NULL){
         printf("Memory allocation failed\n");
         exit(EXIT_FAILURE);
@@ -36,8 +36,8 @@ CDataframe *create_dataframe(int num_columns, int max_rows){
     return dataframe;
 }
 
-// Function to fill the CDataframe with user input
-void fill_dataframe_user_input(CDataframe*dataframe) {
+// Function to fill the CDATAFRAME with user input
+void fill_dataframe_user_input(CDATAFRAME*dataframe) {
     if (!dataframe) return;
     for (int i = 0; i < dataframe->num_columns; i++) {
         COLUMN *col = dataframe->columns[i];
@@ -52,7 +52,7 @@ void fill_dataframe_user_input(CDataframe*dataframe) {
 }
 
 // Hard filling of the created dataframe
-void hard_fill_dataframe(CDataframe *dataframe){
+void hard_fill_dataframe(CDATAFRAME *dataframe){
     int val;
     if (!dataframe) return;
     for (int i=0; i<dataframe->num_columns; i++){
@@ -65,9 +65,9 @@ void hard_fill_dataframe(CDataframe *dataframe){
 }
 
 // Display of the dataframe
-void display_dataframe(CDataframe *dataframe){
+void display_dataframe(CDATAFRAME *dataframe){
     if (!dataframe) return;
-    printf("CDataframe:\n");
+    printf("CDATAFRAME:\n");
     for (int i=0; i<dataframe->num_columns; i++){
         for (int j=0; j<dataframe->max_rows; j++){
             printf("[%d] [%d] %d\n",i+1, j+1, dataframe->columns[i]->data[j]);
@@ -75,11 +75,11 @@ void display_dataframe(CDataframe *dataframe){
     }
 }
 
-// Function to display a part of the CDataframe rows according to a user-provided limit
-void display_partial_rows(CDataframe *dataframe, int limit) {
+// Function to display a part of the CDATAFRAME rows according to a user-provided limit
+void display_partial_rows(CDATAFRAME *dataframe, int limit) {
     if (!dataframe || limit <= 0) return;
 
-    printf("Partial CDataframe (first %d rows):\n", limit);
+    printf("Partial CDATAFRAME (first %d rows):\n", limit);
     for (int i = 0; i < dataframe->num_columns; i++) {
         COLUMN *col = dataframe->columns[i];
         printf("[%s]\n", col->title);
@@ -89,19 +89,19 @@ void display_partial_rows(CDataframe *dataframe, int limit) {
     }
 }
 
-// Function to display a part of the columns of the CDataframe according to a limit supplied by the user
-void display_partial_columns(CDataframe *dataframe, int limit) {
+// Function to display a part of the columns of the CDATAFRAME according to a limit supplied by the user
+void display_partial_columns(CDATAFRAME *dataframe, int limit) {
     if (!dataframe || limit <= 0) return;
 
-    printf("Partial CDataframe (first %d columns):\n", limit);
+    printf("Partial CDATAFRAME (first %d columns):\n", limit);
     for (int i = 0; i < limit && i < dataframe->num_columns; i++) {
         COLUMN *col = dataframe->columns[i];
         print_col(col);
     }
 }
 
-// Function to search for a value in the CDataframe
-int search_value(CDataframe *dataframe, int value) {
+// Function to search for a value in the CDATAFRAME
+int search_value(CDATAFRAME *dataframe, int value) {
     if (!dataframe) return 0;
 
     int count = 0;
