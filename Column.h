@@ -1,7 +1,3 @@
-//
-// Created by Carouge on 20/04/2024.
-//
-
 #ifndef CPROJECT_COLUMN_H
 #define CPROJECT_COLUMN_H
 

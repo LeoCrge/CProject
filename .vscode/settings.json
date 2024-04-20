@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "column.h": "c",
+        "type_traits": "c"
+    }
+}
