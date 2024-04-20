@@ -1,24 +1,13 @@
-#include "main.h"
+#include "Column.h"
+#include "CDataframe.h"
 
 #define REALLOC_SIZE 256
 
 
 // Structure definition for a column
-typedef struct {
-    char *title;
-    int *data;
-    int physical_size;
-    int logical_size;
-} COLUMN;
-
+typedef struct COLUMN;
 // Structure definition for a CDataframe
-typedef struct {
-    COLUMN **columns;
-    int num_columns;
-    int max_columns;
-} CDATAFRAME;
-
-
+typedef struct CDataframe ;
 
 // Function prototypes for column operations
 COLUMN *create_column(char *title);
