@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Include the header file containing function prototypes
-#include "main.h"
+// Include the header file containing function prototypes for COLUMN and CDATAFRAME
+#include "CDataframe.h"
+#include "Column.h"
 
 int main() {
     COLUMN *temperature = create_column("Temperature");
