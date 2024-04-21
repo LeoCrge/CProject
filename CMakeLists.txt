@@ -14,5 +14,7 @@ add_executable(CProject
         column/column.h
         list/list.c
         list/list.h
-        main.c
+        CDataframe.c
+        Column.c
+        testing.c
 )

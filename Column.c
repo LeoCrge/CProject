@@ -5,6 +5,8 @@
 
 #define REALLOC_SIZE 256
 
+
+// Function 4.1.1
 COLUMN *create_column(char *title) {
     COLUMN *col = malloc(sizeof(COLUMN));
     if (col == NULL) {

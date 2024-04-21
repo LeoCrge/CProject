@@ -1,7 +1,13 @@
 #include "CDataframe.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+
+
+// Functions from part 4.2
+
+// Creation of a free dataframe
 CDATAFRAME *create_dataframe(int num_columns, int max_rows) {
     CDATAFRAME *dataframe = (CDATAFRAME *)malloc(sizeof(CDATAFRAME));
     if (dataframe == NULL) {
@@ -20,6 +26,7 @@ CDATAFRAME *create_dataframe(int num_columns, int max_rows) {
     return dataframe;
 }
 
+// Function to fill the CDATAFRAME with user input
 void fill_dataframe_user_input(CDATAFRAME *dataframe) {
     if (!dataframe)
         return;
@@ -35,6 +42,7 @@ void fill_dataframe_user_input(CDATAFRAME *dataframe) {
     }
 }
 
+// Hard filling of the created dataframe
 void hard_fill_dataframe(CDATAFRAME *dataframe) {
     int val;
     if (!dataframe)
@@ -48,6 +56,7 @@ void hard_fill_dataframe(CDATAFRAME *dataframe) {
     }
 }
 
+// Display of the dataframe
 void display_dataframe(CDATAFRAME *dataframe) {
     if (!dataframe)
         return;
@@ -59,6 +68,7 @@ void display_dataframe(CDATAFRAME *dataframe) {
     }
 }
 
+// Function to display a part of the CDATAFRAME rows according to a user-provided limit
 void display_partial_rows(CDATAFRAME *dataframe, int limit) {
     if (!dataframe || limit <= 0)
         return;
@@ -73,6 +83,7 @@ void display_partial_rows(CDATAFRAME *dataframe, int limit) {
     }
 }
 
+// Function to display a part of the columns of the CDATAFRAME according to a limit supplied by the user
 void display_partial_columns(CDATAFRAME *dataframe, int limit) {
     if (!dataframe || limit <= 0)
         return;
@@ -84,6 +95,7 @@ void display_partial_columns(CDATAFRAME *dataframe, int limit) {
     }
 }
 
+// Function to add a row
 void add_row(CDATAFRAME *dataframe, int *values) {
     if (dataframe == NULL || values == NULL) {
         return;
@@ -98,6 +110,7 @@ void add_row(CDATAFRAME *dataframe, int *values) {
     dataframe->num_columns++;
 }
 
+// Function to delete a row
 void delete_row(CDATAFRAME *dataframe, int num_row) {
     if (dataframe == NULL || num_row < 0 || num_row > dataframe->num_rows) {
         return;
@@ -111,6 +124,7 @@ void delete_row(CDATAFRAME *dataframe, int num_row) {
     dataframe->num_rows--;
 }
 
+// Function to add a column
 void add_column(CDATAFRAME *dataframe, char *title) {
     if (dataframe == NULL || title == NULL) {
         return;
@@ -118,6 +132,7 @@ void add_column(CDATAFRAME *dataframe, char *title) {
     dataframe->columns[dataframe->num_columns++] = create_column(title);
 }
 
+// Function to delete a column
 void delete_columns(CDATAFRAME *dataframe, int num_col) {
     if (dataframe == NULL || num_col < 0 || num_col >= dataframe->num_columns) {
         return;
@@ -128,6 +143,7 @@ void delete_columns(CDATAFRAME *dataframe, int num_col) {
     dataframe->num_columns--;
 }
 
+// Function to rename a column
 void rename_column(CDATAFRAME *dataframe, int num_col, char *new_title) {
     if (dataframe == NULL || num_col < 0 || num_col >= dataframe->num_columns || new_title == NULL) {
         printf("Invalid parameters! \n");
@@ -137,6 +153,7 @@ void rename_column(CDATAFRAME *dataframe, int num_col, char *new_title) {
     dataframe->columns[num_col]->title = strdup(new_title);
 }
 
+// Function to search for a value in the CDATAFRAME
 int search_value(CDATAFRAME *dataframe, int value) {
     if (!dataframe)
         return 0;
@@ -153,6 +170,7 @@ int search_value(CDATAFRAME *dataframe, int value) {
     return count;
 }
 
+// Function to find the value at a certain cell
 int value_at_cell(CDATAFRAME *dataframe, int num_row, int num_col) {
     if (dataframe == NULL || num_row < 0 || num_row >= dataframe->num_rows || num_col < 0 || num_col >= dataframe->num_columns) {
         exit(EXIT_FAILURE);
@@ -160,6 +178,7 @@ int value_at_cell(CDATAFRAME *dataframe, int num_row, int num_col) {
     return dataframe->columns[num_col]->data[num_row];
 }
 
+// Function to display the names of the column
 void display_column_names(CDATAFRAME *dataframe) {
     if (dataframe == NULL) {
         return;
@@ -170,6 +189,7 @@ void display_column_names(CDATAFRAME *dataframe) {
     }
 }
 
+// Function to display the number of rows
 int number_rows(CDATAFRAME *dataframe) {
     if (dataframe == NULL) {
         return 0;
@@ -177,6 +197,7 @@ int number_rows(CDATAFRAME *dataframe) {
     return dataframe->num_rows;
 }
 
+// Function to display the number of column
 int number_columns(CDATAFRAME *dataframe) {
     if (dataframe == NULL) {
         return 0;
@@ -184,6 +205,7 @@ int number_columns(CDATAFRAME *dataframe) {
     return dataframe->num_columns;
 }
 
+// Function to give the number of cells that are equal to a given value
 int cells_equal_to(CDATAFRAME *dataframe, int x) {
     if (dataframe == NULL) {
         return 0;
@@ -195,6 +217,7 @@ int cells_equal_to(CDATAFRAME *dataframe, int x) {
     return count;
 }
 
+// Function to give the number of cells that are greater than a given value
 int cells_greater_than(CDATAFRAME *dataframe, int x) {
     if (dataframe == NULL) {
         return 0;
@@ -206,6 +229,7 @@ int cells_greater_than(CDATAFRAME *dataframe, int x) {
     return count;
 }
 
+// Function to give the number of cells that are smaller than a given value
 int cells_smaller_than(CDATAFRAME *dataframe, int x) {
     if (dataframe == NULL) {
         return 0;
