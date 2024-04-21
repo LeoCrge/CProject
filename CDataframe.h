@@ -148,7 +148,7 @@ void delete_columns (CDATAFRAME *dataframe, int num_col){
     for (int i=num_col; i<dataframe->num_columns-1; i++){
         dataframe->columns[i]=dataframe->columns[i+1];
     }
-    dataframe->num_columns-1;
+    dataframe->num_columns--;
 }
 
 // Rename a column
