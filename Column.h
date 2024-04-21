@@ -1,7 +1,6 @@
 #ifndef CPROJECT_COLUMN_H
 #define CPROJECT_COLUMN_H
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
