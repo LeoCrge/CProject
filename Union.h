@@ -1,10 +1,9 @@
 #ifndef CPROJECT_UNION_H
 #define CPROJECT_UNION_H
 
-COLUMN *create_column(ENUM_TYPE type, char *title);
+#include "Column.h"
 
-enum enum_type
-{
+enum enum_type {
     NULLVAL = 1 , UINT, INT, CHAR, FLOAT, DOUBLE, STRING, STRUCTURE
 };
 typedef enum enum_type ENUM_TYPE;
@@ -29,6 +28,9 @@ struct column {
     unsigned long long int *index; // array of integers
 };
 typedef struct column COLUMN;
+
+
+COLUMN *create_column(ENUM_TYPE type, char *title);
 
 
 
