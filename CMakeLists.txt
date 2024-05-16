@@ -18,4 +18,7 @@ add_executable(CProject
         Column.c
         testing.c
         Union.h
+        Union.c
+        Union.c
+        union/union.h
 )
