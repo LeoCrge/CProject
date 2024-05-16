@@ -11,23 +11,37 @@
     - @return : Pointer to the created column
 */
 COLUMN *create_column(ENUM_TYPE type, char *title) {
-    COLUMN *col = malloc(sizeof(COLUMN));
+    COLUMN *new_column = (COLUMN *)malloc(sizeof(COLUMN));
 
-    if (col == NULL) {
+    if (new_column == NULL) {
         printf("Memory allocation failed \n");
         exit(EXIT_FAILURE);
     }
 
-    col->title = strdup(title);
-    col->data = NULL;
-    col->size = 0;
-    col->max_size = 0;
-    col->column_type = 0;
-    col->index = 0;
-    return col;
+    new_column->title = strdup(title);
+    new_column->size = 0;
+    new_column->max_size = 0;
+    new_column->column_type = type;
+
+    new_column->data = NULL;
+    new_column->index = NULL;
+
+    return new_column;
 }
 
 
 int main() {
     COLUMN *mycol = create_column(CHAR, "caca");
+    if (mycol != NULL) {
+        printf("Column created successfully!\n");
+        printf("Title: %s\n", mycol->title);
+        printf("Type: %d\n", mycol->column_type);
+
+        free(mycol->title);
+        free(mycol);
+    } else {
+        printf("Failed to create column!\n");
+    }
+
+    return 0;
 }
