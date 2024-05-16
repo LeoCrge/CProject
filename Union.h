@@ -1,8 +1,6 @@
 #ifndef CPROJECT_UNION_H
 #define CPROJECT_UNION_H
 
-#include "Column.h"
-
 enum enum_type {
     NULLVAL = 1 , UINT, INT, CHAR, FLOAT, DOUBLE, STRING, STRUCTURE
 };
@@ -29,8 +27,8 @@ struct column {
 };
 typedef struct column COLUMN;
 
-
-COLUMN *create_column(ENUM_TYPE type, char *title);
+COLUMN *create_column(char *title);
+COLUMN *create_column1(ENUM_TYPE type, char *title);
 
 
 
