@@ -28,3 +28,6 @@ COLUMN *create_column(ENUM_TYPE type, char *title) {
 }
 
 
+int main() {
+    COLUMN *mycol = create_column(CHAR, "caca");
+}
