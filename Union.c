@@ -10,7 +10,7 @@
     - @param2 : Column title
     - @return : Pointer to the created column
 */
-COLUMN *create_column(ENUM_TYPE type, char *title) {
+COLUMN *create_column1(ENUM_TYPE type, char *title) {
     COLUMN *new_column = (COLUMN *)malloc(sizeof(COLUMN));
 
     if (new_column == NULL) {
@@ -31,7 +31,7 @@ COLUMN *create_column(ENUM_TYPE type, char *title) {
 
 
 int main() {
-    COLUMN *mycol = create_column(CHAR, "caca");
+    COLUMN *mycol = create_column1(CHAR, "caca");
     if (mycol != NULL) {
         printf("Column created successfully!\n");
         printf("Title: %s\n", mycol->title);
@@ -45,3 +45,4 @@ int main() {
 
     return 0;
 }
+

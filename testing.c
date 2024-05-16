@@ -6,6 +6,8 @@
 #include "CDataframe.h"
 #include "Column.h"
 
+
+/*
 int main() {
     COLUMN *temperature = create_column("Temperature");
 
@@ -39,4 +41,4 @@ int main() {
     free(dataframe);
 
     return 0;
-}
+}*/
