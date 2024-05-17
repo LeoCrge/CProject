@@ -37,18 +37,29 @@ COLUMN *create_column1(ENUM_TYPE type, char *title) {
 * @param2: Pointer to the value to insert
 * @return: 1 if the value is correctly inserted 0 otherwise
 */
-int insert_value(COLUMN *col, void *value) {
-    if (!col) return 0;
-    if (col->size <= col->max_size){
-        int* loc = realloc(col->data, (col->size + REALLOC_SIZE) * sizeof(int));
-        if (loc == NULL){
-            printf("Memory allocation failed \n");
+int insert_value1(COLUMN *col, void *value) {
+    if (col == NULL || value == NULL) {
+        return 0;
+    }
+
+    if (col->size >= col->max_size) {
+        col->max_size += REALLOC_SIZE;
+        COL_TYPE **temp_data = realloc(col->data, col->max_size * sizeof(COL_TYPE *));
+        if (temp_data == NULL) {
             return 0;
         }
-        col->data = loc;
-        col->size += REALLOC_SIZE;
+        col->data = temp_data;
     }
-    col->data[col->max_size++] = value;
+
+    col->data[col->size] = (COL_TYPE *)malloc(sizeof(COL_TYPE));
+    if (col->data[col->size] == NULL) {
+        return 0;
+    }
+
+    memcpy(col->data[col->size], value, sizeof(COL_TYPE));
+
+    col->size++;
+
     return 1;
 }
 
@@ -61,11 +72,17 @@ int main() {
         printf("Type: %d\n", mycol->column_type);
 
         char a = 'A', c = 'C';
-        insert_value(mycol, &a);
-        insert_value(mycol, NULL);
-        insert_value(mycol, &c);
+        insert_value1(mycol, &a);
+        insert_value1(mycol, NULL);
+        insert_value1(mycol, &c);
+
+        printf("Logical size: %u\n", mycol->size);
 
         free(mycol->title);
+        for (unsigned int i = 0; i < mycol->size; ++i) {
+            free(mycol->data[i]);
+        }
+        free(mycol->data);
         free(mycol);
     } else {
         printf("Failed to create column!\n");
