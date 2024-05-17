@@ -64,6 +64,19 @@ int insert_value1(COLUMN *col, void *value) {
 }
 
 
+void menu() {
+    printf("1 - Create a Column");
+    printf("2 - Insert a value");
+    printf("3 - Delete a column");
+    printf("4 - Convert a value");
+    printf("5 - Print a value");
+    printf("6 - Number of occurrences of x");
+    printf("7 - Value present at position x");
+    printf("8 - Number of values grater than x");
+    printf("9 - Number of values lower than x");
+    printf("10 - Number of values equal to x");
+}
+
 int main() {
     COLUMN *mycol = create_column1(CHAR, "caca");
     if (mycol != NULL) {
