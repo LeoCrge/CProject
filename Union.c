@@ -37,7 +37,7 @@ COLUMN *create_column1(ENUM_TYPE type, char *title) {
 * @param2: Pointer to the value to insert
 * @return: 1 if the value is correctly inserted 0 otherwise
 */
-int insert_value(COLUMN *col, void *value) {
+int insert_value1(COLUMN *col, void *value) {
     if (col->size == col->max_size) {
         col->max_size += 256;
         col->data = (COL_TYPE **)realloc(col->data, col->max_size * sizeof(COL_TYPE *));
@@ -46,7 +46,7 @@ int insert_value(COLUMN *col, void *value) {
             exit(1);
         }
     }
-    
+
     col->data[col->size] = (COL_TYPE *)malloc(sizeof(COL_TYPE));
     if (col->data[col->size] == NULL) {
         printf("Memory allocation failed!\n");
@@ -92,27 +92,44 @@ int insert_value(COLUMN *col, void *value) {
 }
 
 
-/**
-* @brief: Free the space allocated by a column
-* @param1: Pointer to the column
-*/
-void delete_column1(COLUMN **col) {
-    printf("1");
-    //free((*col)->title);
-    printf("2 %d", (*col)->size);
-    for (unsigned int i = 0; i < (*col)->size; ++i) {
-        free((*col)->data[i]);
-
-        printf("2");
-    }
-
-    printf("3");
-    free((*col)->data);
-
-    printf("4");
-    free((*col));
+void delete_column1(COLUMN *col){
+    free(col->title);
+    free(col->data);
+    free(col);
 }
 
+void print_column(COLUMN *col) {
+    printf("Values in the column:\n");
+    for (unsigned int i = 0; i < col->size; i++) {
+        switch(col->column_type) {
+            case NULLVAL:
+                printf("NULL\n");
+                break;
+            case UINT:
+                printf("%u\n", *((unsigned int *)(col->data[i])));
+                break;
+            case INT:
+                printf("%d\n", *((int *)(col->data[i])));
+                break;
+            case CHAR:
+                printf("%c\n", *((char *)(col->data[i])));
+                break;
+            case FLOAT:
+                printf("%f\n", *((float *)(col->data[i])));
+                break;
+            case DOUBLE:
+                printf("%lf\n", *((double *)(col->data[i])));
+                break;
+            case STRING:
+                printf("%s\n", ((COL_TYPE *)(col->data[i]))->string_value);
+                break;
+            case STRUCTURE:
+                break;
+            default:
+                printf("Invalid column type!\n");
+        }
+    }
+}
 
 void menu() {
     printf("1 - Create a Column");
@@ -128,22 +145,29 @@ void menu() {
 }
 
 int main() {
-    COLUMN *mycol = create_column1(CHAR, "test");
+    COLUMN *mycol = create_column1(CHAR, "caca");
     if (mycol != NULL) {
         printf("Column created successfully!\n");
         printf("Title: %s\n", mycol->title);
         printf("Type: %d\n", mycol->column_type);
 
         char a = 'A', c = 'C';
+        int num=42;
         insert_value1(mycol, &a);
-        insert_value1(mycol, NULL);
+        insert_value1(mycol, &num);
         insert_value1(mycol, &c);
 
         printf("Logical size: %u\n", mycol->size);
+        print_column(mycol);
+
+
 
         delete_column1(mycol);
-        printf("testing");
+        printf("testing \n");
         printf("Title: %s\n", mycol->title);
+        print_column(mycol);
+
+
     } else {
         printf("Failed to create column!\n");
     }
