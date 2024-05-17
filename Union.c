@@ -67,12 +67,20 @@ int insert_value1(COLUMN *col, void *value) {
 * @brief: Free the space allocated by a column
 * @param1: Pointer to the column
 */
-void delete_column(COLUMN **col) {
-    free((*col)->title);
+void delete_column1(COLUMN **col) {
+    printf("1");
+    //free((*col)->title);
+    printf("2 %d", (*col)->size);
     for (unsigned int i = 0; i < (*col)->size; ++i) {
         free((*col)->data[i]);
+
+        printf("2");
     }
+
+    printf("3");
     free((*col)->data);
+
+    printf("4");
     free((*col));
 }
 
@@ -91,7 +99,7 @@ void menu() {
 }
 
 int main() {
-    COLUMN *mycol = create_column1(CHAR, "caca");
+    COLUMN *mycol = create_column1(CHAR, "test");
     if (mycol != NULL) {
         printf("Column created successfully!\n");
         printf("Title: %s\n", mycol->title);
@@ -104,7 +112,9 @@ int main() {
 
         printf("Logical size: %u\n", mycol->size);
 
-        delete_column(mycol);
+        delete_column1(mycol);
+        printf("testing");
+        printf("Title: %s\n", mycol->title);
     } else {
         printf("Failed to create column!\n");
     }
