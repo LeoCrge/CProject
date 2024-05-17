@@ -43,7 +43,7 @@ int insert_value1(COLUMN *col, void *value) {
     }
 
     if (col->size >= col->max_size) {
-        col->max_size += REALLOC_SIZE;
+        col->max_size += 256;
         COL_TYPE **temp_data = realloc(col->data, col->max_size * sizeof(COL_TYPE *));
         if (temp_data == NULL) {
             return 0;
@@ -51,17 +51,23 @@ int insert_value1(COLUMN *col, void *value) {
         col->data = temp_data;
     }
 
-    col->data[col->size] = (COL_TYPE *)malloc(sizeof(COL_TYPE));
-    if (col->data[col->size] == NULL) {
-        return 0;
+    switch (col->column_type) {
+        case INT:
+            col->data[col->size] = (COL_TYPE *)malloc(sizeof(int));
+            if (col->data[col->size] == NULL) {
+                return 0;
+            }
+            *((int *)col->data[col->size]) = *((int *)value);
+            break;
+        default:
+            return 0;
     }
-
-    memcpy(col->data[col->size], value, sizeof(COL_TYPE));
 
     col->size++;
 
     return 1;
 }
+
 
 /**
 * @brief: Free the space allocated by a column
