@@ -37,34 +37,57 @@ COLUMN *create_column1(ENUM_TYPE type, char *title) {
 * @param2: Pointer to the value to insert
 * @return: 1 if the value is correctly inserted 0 otherwise
 */
-int insert_value1(COLUMN *col, void *value) {
-    if (col == NULL || value == NULL) {
-        return 0;
-    }
-
-    if (col->size >= col->max_size) {
+int insert_value(COLUMN *col, void *value) {
+    if (col->size == col->max_size) {
         col->max_size += 256;
-        COL_TYPE **temp_data = realloc(col->data, col->max_size * sizeof(COL_TYPE *));
-        if (temp_data == NULL) {
-            return 0;
+        col->data = (COL_TYPE **)realloc(col->data, col->max_size * sizeof(COL_TYPE *));
+        if (col->data == NULL) {
+            printf("Memory reallocation failed!\n");
+            exit(1);
         }
-        col->data = temp_data;
+    }
+    
+    col->data[col->size] = (COL_TYPE *)malloc(sizeof(COL_TYPE));
+    if (col->data[col->size] == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(1);
     }
 
-    switch (col->column_type) {
+    switch(col->column_type) {
+        case NULLVAL:
+            break;
+        case UINT:
+            *((unsigned int *)(col->data[col->size])) = *((unsigned int *)value);
+            break;
         case INT:
-            col->data[col->size] = (COL_TYPE *)malloc(sizeof(int));
-            if (col->data[col->size] == NULL) {
-                return 0;
+            *((int *)(col->data[col->size])) = *((int *)value);
+            break;
+        case CHAR:
+            *((char *)(col->data[col->size])) = *((char *)value);
+            break;
+        case FLOAT:
+            *((float *)(col->data[col->size])) = *((float *)value);
+            break;
+        case DOUBLE:
+            *((double *)(col->data[col->size])) = *((double *)value);
+            break;
+        case STRING:
+            col->data[col->size]->string_value = (char *)malloc((strlen((char *)value) + 1) * sizeof(char));
+            if (col->data[col->size]->string_value == NULL) {
+                printf("Memory allocation failed!\n");
+                exit(1);
             }
-            *((int *)col->data[col->size]) = *((int *)value);
+            strcpy(col->data[col->size]->string_value, (char *)value);
+            break;
+        case STRUCTURE:
+            memcpy(col->data[col->size], value, sizeof(COL_TYPE));
             break;
         default:
+            printf("Invalid column type!\n");
             return 0;
     }
-
+    
     col->size++;
-
     return 1;
 }
 
