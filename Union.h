@@ -1,5 +1,5 @@
-#ifndef CPROJECT_UNION_H
-#define CPROJECT_UNION_H
+#ifndef UNION_H
+#define UNION_H
 
 enum enum_type {
     NULLVAL = 1 , UINT, INT, CHAR, FLOAT, DOUBLE, STRING, STRUCTURE
@@ -29,6 +29,9 @@ typedef struct column COLUMN;
 
 COLUMN *create_column(char *title);
 COLUMN *create_column1(ENUM_TYPE type, char *title);
+int insert_value1(COLUMN *col, void *value);
+void delete_column1(COLUMN *col);
+void print_column(COLUMN *col);
 
 
 
