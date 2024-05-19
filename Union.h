@@ -31,7 +31,13 @@ COLUMN *create_column(char *title);
 COLUMN *create_column1(ENUM_TYPE type, char *title);
 int insert_value1(COLUMN *col, void *value);
 void delete_column1(COLUMN *col);
+void convert_value(COLUMN *col, unsigned long long int i, char *str, int size);
 void print_column(COLUMN *col);
+unsigned int count_occurrences(COLUMN *col, void *value);
+char *value_at_position(COLUMN *col, unsigned int position);
+unsigned int count_greater_than(COLUMN *col, void *value);
+unsigned int count_lower_than(COLUMN *col, void *value);
+unsigned int count_equal_to(COLUMN *col, void *value);
 
 
 

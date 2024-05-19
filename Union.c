@@ -1,34 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// #include "Union.h"
+#include "Union.h"
 
 #define REALLOC_SIZE 256
 
-typedef enum {
-    NULLVAL,
-    UINT,
-    INT,
-    CHAR,
-    FLOAT,
-    DOUBLE,
-    STRING,
-    STRUCTURE
-} ENUM_TYPE;
-
-typedef struct {
-    char *string_value;
-} COL_TYPE;
-
-typedef struct {
-    char *title;
-    unsigned int size;
-    unsigned int max_size;
-    ENUM_TYPE column_type;
-    COL_TYPE **data;
-    void **index; // Assuming this is used for indexing, though it's not implemented in the provided code
-} COLUMN;
 
 /*
     - Create a new column

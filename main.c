@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include "Union.h"
 #include "Union.c"
 
 #define REALLOC_SIZE 256
@@ -103,7 +102,7 @@ int main() {
                     char string[256];
                     printf("Which index's value do you want to convert?");
                     scanf("%d", &index);
-                    convert_value(mycol, index, string, sizeof(string));
+                    convert_value(mycol, index,string, sizeof(string));
                 }
                 else {
                     printf("No value in the column");

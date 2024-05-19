@@ -23,4 +23,5 @@ add_executable(CProject
         union/union.h
         main.c
         main.c
+        main2.c
 )
