@@ -124,6 +124,7 @@ void delete_column1(COLUMN *col) {
 }
 
 void print_column(COLUMN *col) {
+    printf("Title: %s\n", col->title);
     printf("Values in the column:\n");
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
@@ -144,4 +145,90 @@ void print_column(COLUMN *col) {
                 printf("Invalid column type!\n");
         }
     }
+}
+
+unsigned int count_occurrences(COLUMN *col, void *value) {
+    unsigned int count = 0;
+    for (unsigned int i = 0; i < col->size; i++) {
+        switch (col->column_type) {
+            case UINT:
+                if (atoi(col->data[i]->string_value) == *((unsigned int *)value)) count++;
+                break;
+            case INT:
+                if (atoi(col->data[i]->string_value) == *((int *)value)) count++;
+                break;
+            case CHAR:
+                if (col->data[i]->string_value[0] == *((char *)value)) count++;
+                break;
+            case FLOAT:
+                if (atof(col->data[i]->string_value) == *((float *)value)) count++;
+                break;
+            case DOUBLE:
+                if (atof(col->data[i]->string_value) == *((double *)value)) count++;
+                break;
+            case STRING:
+                if (strcmp(col->data[i]->string_value, (char *)value) == 0) count++;
+                break;
+            default:
+                printf("Invalid column type!\n");
+        }
+    }
+    return count;
+}
+
+char *value_at_position(COLUMN *col, unsigned int position) {
+    if (position < col->size) {
+        return col->data[position]->string_value;
+    }
+    return NULL;
+}
+
+unsigned int count_greater_than(COLUMN *col, void *value) {
+    unsigned int count = 0;
+    for (unsigned int i = 0; i < col->size; i++) {
+        switch (col->column_type) {
+            case UINT:
+                if (atoi(col->data[i]->string_value) > *((unsigned int *)value)) count++;
+                break;
+            case INT:
+                if (atoi(col->data[i]->string_value) > *((int *)value)) count++;
+                break;
+            case FLOAT:
+                if (atof(col->data[i]->string_value) > *((float *)value)) count++;
+                break;
+            case DOUBLE:
+                if (atof(col->data[i]->string_value) > *((double *)value)) count++;
+                break;
+            default:
+                printf("Invalid column type for comparison!\n");
+        }
+    }
+    return count;
+}
+
+unsigned int count_lower_than(COLUMN *col, void *value) {
+    unsigned int count = 0;
+    for (unsigned int i = 0; i < col->size; i++) {
+        switch (col->column_type) {
+            case UINT:
+                if (atoi(col->data[i]->string_value) < *((unsigned int *)value)) count++;
+                break;
+            case INT:
+                if (atoi(col->data[i]->string_value) < *((int *)value)) count++;
+                break;
+            case FLOAT:
+                if (atof(col->data[i]->string_value) < *((float *)value)) count++;
+                break;
+            case DOUBLE:
+                if (atof(col->data[i]->string_value) < *((double *)value)) count++;
+                break;
+            default:
+                printf("Invalid column type for comparison!\n");
+        }
+    }
+    return count;
+}
+
+unsigned int count_equal_to(COLUMN *col, void *value) {
+    return count_occurrences(col, value);
 }

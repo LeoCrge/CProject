@@ -24,7 +24,7 @@ void menu() {
 
 int main() {
     COLUMN *mycol = NULL;
-    int choice, col_type, int_val;
+    int choice, col_type, int_val, position;
     char char_val, str_val[256];
     float float_val;
     double double_val;
@@ -106,6 +106,154 @@ int main() {
                     print_column(mycol);
                 } else {
                     printf("No column to print!\n");
+                }
+                break;
+
+            case 6:
+                if (mycol == NULL) {
+                    printf("Create a column first!\n");
+                    break;
+                }
+
+                printf("Enter value to count occurrences: ");
+                switch (mycol->column_type) {
+                    case UINT:
+                        scanf("%u", &int_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, &int_val));
+                        break;
+                    case INT:
+                        scanf("%d", &int_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, &int_val));
+                        break;
+                    case CHAR:
+                        scanf(" %c", &char_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, &char_val));
+                        break;
+                    case FLOAT:
+                        scanf("%f", &float_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, &float_val));
+                        break;
+                    case DOUBLE:
+                        scanf("%lf", &double_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, &double_val));
+                        break;
+                    case STRING:
+                        scanf("%s", str_val);
+                        printf("Occurrences: %u\n", count_occurrences(mycol, str_val));
+                        break;
+                    default:
+                        printf("Invalid column type!\n");
+                }
+                break;
+
+            case 7:
+                if (mycol == NULL) {
+                    printf("Create a column first!\n");
+                    break;
+                }
+
+                printf("Enter position: ");
+                scanf("%d", &position);
+                char *value = value_at_position(mycol, position);
+                if (value) {
+                    printf("Value at position %d: %s\n", position, value);
+                } else {
+                    printf("Invalid position!\n");
+                }
+                break;
+
+            case 8:
+                if (mycol == NULL) {
+                    printf("Create a column first!\n");
+                    break;
+                }
+
+                printf("Enter value to count greater values: ");
+                switch (mycol->column_type) {
+                    case UINT:
+                        scanf("%u", &int_val);
+                        printf("Greater values: %u\n", count_greater_than(mycol, &int_val));
+                        break;
+                    case INT:
+                        scanf("%d", &int_val);
+                        printf("Greater values: %u\n", count_greater_than(mycol, &int_val));
+                        break;
+                    case FLOAT:
+                        scanf("%f", &float_val);
+                        printf("Greater values: %u\n", count_greater_than(mycol, &float_val));
+                        break;
+                    case DOUBLE:
+                        scanf("%lf", &double_val);
+                        printf("Greater values: %u\n", count_greater_than(mycol, &double_val));
+                        break;
+                    default:
+                        printf("Invalid column type for comparison!\n");
+                }
+                break;
+
+            case 9:
+                if (mycol == NULL) {
+                    printf("Create a column first!\n");
+                    break;
+                }
+
+                printf("Enter value to count lower values: ");
+                switch (mycol->column_type) {
+                    case UINT:
+                        scanf("%u", &int_val);
+                        printf("Lower values: %u\n", count_lower_than(mycol, &int_val));
+                        break;
+                    case INT:
+                        scanf("%d", &int_val);
+                        printf("Lower values: %u\n", count_lower_than(mycol, &int_val));
+                        break;
+                    case FLOAT:
+                        scanf("%f", &float_val);
+                        printf("Lower values: %u\n", count_lower_than(mycol, &float_val));
+                        break;
+                    case DOUBLE:
+                        scanf("%lf", &double_val);
+                        printf("Lower values: %u\n", count_lower_than(mycol, &double_val));
+                        break;
+                    default:
+                        printf("Invalid column type for comparison!\n");
+                }
+                break;
+
+            case 10:
+                if (mycol == NULL) {
+                    printf("Create a column first!\n");
+                    break;
+                }
+
+                printf("Enter value to count equal values: ");
+                switch (mycol->column_type) {
+                    case UINT:
+                        scanf("%u", &int_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, &int_val));
+                        break;
+                    case INT:
+                        scanf("%d", &int_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, &int_val));
+                        break;
+                    case CHAR:
+                        scanf(" %c", &char_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, &char_val));
+                        break;
+                    case FLOAT:
+                        scanf("%f", &float_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, &float_val));
+                        break;
+                    case DOUBLE:
+                        scanf("%lf", &double_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, &double_val));
+                        break;
+                    case STRING:
+                        scanf("%s", str_val);
+                        printf("Equal values: %u\n", count_equal_to(mycol, str_val));
+                        break;
+                    default:
+                        printf("Invalid column type!\n");
                 }
                 break;
 
