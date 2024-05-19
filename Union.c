@@ -123,6 +123,39 @@ void delete_column1(COLUMN *col) {
     free(col);
 }
 
+void convert_value(COLUMN *col, unsigned long long int i, char *str, int size) {
+    if (i >= col->size) {
+        snprintf(str, size, "Index out of bounds");
+        return;
+    }
+
+    switch (col->column_type) {
+        case NULLVAL:
+            break;
+        case INT:
+            snprintf(str, size, "%d", *((int*)col->data[i]));
+            break;
+        case CHAR:
+            snprintf(str, size, "%c", *((char*)col->data[i]));
+            break;
+        case FLOAT:
+            snprintf(str, size, "%f", *((float*)col->data[i]));
+            break;
+        case DOUBLE:
+            snprintf(str, size, "%lf", *((double*)col->data[i]));
+            break;
+        case STRING:
+            snprintf(str, size, "%s", (char*)col->data[i]);
+            break;
+        case STRUCTURE:
+            break;
+        default:
+            printf("Invalid column type!\n");
+            return;
+    }
+
+}
+
 void print_column(COLUMN *col) {
     printf("Title: %s\n", col->title);
     printf("Values in the column:\n");

@@ -98,7 +98,16 @@ int main() {
                 break;
 
             case 4:
-                printf("Conversion not implemented!\n");
+                if (mycol!=NULL){
+                    int index;
+                    char string[256];
+                    printf("Which index's value do you want to convert?");
+                    scanf("%d", &index);
+                    convert_value(mycol, index, string, sizeof(string));
+                }
+                else {
+                    printf("No value in the column");
+                }
                 break;
 
             case 5:
