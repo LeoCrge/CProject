@@ -107,24 +107,27 @@ void convert_value(COLUMN1 *col, unsigned long long int i, char *str, int size) 
     }
 
     switch (col->column_type) {
-        case NULLVAL:
+        case 0:
             break;
-        case INT:
+        case 1:
+            snprintf(str, size, "%d", *((unsigned int*)col->data[i]));
+            break;
+        case 2:
             snprintf(str, size, "%d", *((int*)col->data[i]));
             break;
-        case CHAR:
+        case 3:
             snprintf(str, size, "%c", *((char*)col->data[i]));
             break;
-        case FLOAT:
+        case 4:
             snprintf(str, size, "%f", *((float*)col->data[i]));
             break;
-        case DOUBLE:
+        case 5:
             snprintf(str, size, "%lf", *((double*)col->data[i]));
             break;
-        case STRING:
+        case 6:
             snprintf(str, size, "%s", (char*)col->data[i]);
             break;
-        case STRUCTURE:
+        case 7:
             break;
         default:
             printf("Invalid column type!\n");
@@ -161,22 +164,22 @@ unsigned int count_occurrences(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
-            case UINT:
+            case 1:
                 if (atoi(col->data[i]->string_value) == *((unsigned int *)value)) count++;
                 break;
-            case INT:
+            case 2:
                 if (atoi(col->data[i]->string_value) == *((int *)value)) count++;
                 break;
-            case CHAR:
+            case 3:
                 if (col->data[i]->string_value[0] == *((char *)value)) count++;
                 break;
-            case FLOAT:
+            case 4:
                 if (atof(col->data[i]->string_value) == *((float *)value)) count++;
                 break;
-            case DOUBLE:
+            case 5:
                 if (atof(col->data[i]->string_value) == *((double *)value)) count++;
                 break;
-            case STRING:
+            case 6:
                 if (strcmp(col->data[i]->string_value, (char *)value) == 0) count++;
                 break;
             default:
@@ -197,16 +200,16 @@ unsigned int count_greater_than(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
-            case UINT:
+            case 1:
                 if (atoi(col->data[i]->string_value) > *((unsigned int *)value)) count++;
                 break;
-            case INT:
+            case 2:
                 if (atoi(col->data[i]->string_value) > *((int *)value)) count++;
                 break;
-            case FLOAT:
+            case 4:
                 if (atof(col->data[i]->string_value) > *((float *)value)) count++;
                 break;
-            case DOUBLE:
+            case 5:
                 if (atof(col->data[i]->string_value) > *((double *)value)) count++;
                 break;
             default:
@@ -220,16 +223,16 @@ unsigned int count_lower_than(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
-            case UINT:
+            case 1:
                 if (atoi(col->data[i]->string_value) < *((unsigned int *)value)) count++;
                 break;
-            case INT:
+            case 2:
                 if (atoi(col->data[i]->string_value) < *((int *)value)) count++;
                 break;
-            case FLOAT:
+            case 4:
                 if (atof(col->data[i]->string_value) < *((float *)value)) count++;
                 break;
-            case DOUBLE:
+            case 5:
                 if (atof(col->data[i]->string_value) < *((double *)value)) count++;
                 break;
             default:
