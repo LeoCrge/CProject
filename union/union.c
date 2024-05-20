@@ -52,32 +52,32 @@ int insert_value1(COLUMN1 *col, void *value) {
     }
 
     switch (col->column_type) {
-        case NULLVAL:
+        case 0:
             break;
-        case UINT:
+        case 1:
             col->data[col->size]->string_value = (char *)malloc(20 * sizeof(char));
             snprintf(col->data[col->size]->string_value, 20, "%u", *((unsigned int *)value));
             break;
-        case INT:
+        case 2:
             col->data[col->size]->string_value = (char *)malloc(20 * sizeof(char));
             snprintf(col->data[col->size]->string_value, 20, "%d", *((int *)value));
             break;
-        case CHAR:
-            col->data[col->size]->string_value = (char *)malloc(2 * sizeof(char));
-            snprintf(col->data[col->size]->string_value, 2, "%c", *((char *)value));
+        case 3:
+            col->data[col->size]->string_value = (char *)malloc(3 * sizeof(char));
+            snprintf(col->data[col->size]->string_value, 3, "%c", *((char *)value));
             break;
-        case FLOAT:
+        case 4:
             col->data[col->size]->string_value = (char *)malloc(20 * sizeof(char));
             snprintf(col->data[col->size]->string_value, 20, "%f", *((float *)value));
             break;
-        case DOUBLE:
+        case 5:
             col->data[col->size]->string_value = (char *)malloc(20 * sizeof(char));
             snprintf(col->data[col->size]->string_value, 20, "%lf", *((double *)value));
             break;
-        case STRING:
+        case 6:
             col->data[col->size]->string_value = strdup((char *)value);
             break;
-        case STRUCTURE:
+        case 7:
             // Assuming the size of the structure is not known
             break;
         default:
@@ -88,6 +88,7 @@ int insert_value1(COLUMN1 *col, void *value) {
     col->size++;
     return 1;
 }
+
 
 void delete_column1(COLUMN1 *col) {
     free(col->title);
@@ -146,7 +147,7 @@ void print_column(COLUMN1 *col) {
             case FLOAT:
             case DOUBLE:
             case STRING:
-                printf("%s\n", col->data[i]->string_value);
+                printf("aa %s\n", col->data[i]->string_value);
                 break;
             case STRUCTURE:
                 break;

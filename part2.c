@@ -42,6 +42,7 @@ int part2() {
                 scanf("%s", title);
                 mycol = create_column1((ENUM_TYPE)col_type, title);
                 printf("Column created successfully!\n");
+                printf("Column type: %d\n", mycol->column_type);
                 break;
 
             case 2:
@@ -51,32 +52,33 @@ int part2() {
                 }
 
                 switch (mycol->column_type) {
-                    case UINT:
+                    case 1:
                         printf("Enter unsigned int value: ");
                         scanf("%u", &int_val);
                         insert_value1(mycol, &int_val);
                         break;
-                    case INT:
+                    case 2:
                         printf("Enter int value: ");
                         scanf("%d", &int_val);
                         insert_value1(mycol, &int_val);
                         break;
-                    case CHAR:
+                    case 3:
                         printf("Enter char value: ");
-                        scanf("%c", &char_val);
+                        while ((getchar()) != '\n'); // Clear the input buffer
+                        scanf(" %c", &char_val); // Note the space before %c
                         insert_value1(mycol, &char_val);
                         break;
-                    case FLOAT:
+                    case 4:
                         printf("Enter float value: ");
                         scanf("%f", &float_val);
                         insert_value1(mycol, &float_val);
                         break;
-                    case DOUBLE:
+                    case 5:
                         printf("Enter double value: ");
                         scanf("%lf", &double_val);
                         insert_value1(mycol, &double_val);
                         break;
-                    case STRING:
+                    case 6:
                         printf("Enter string value: \n");
                         scanf("%s", str_val);
                         // gets(str_val);
@@ -126,27 +128,27 @@ int part2() {
 
                 printf("Enter value to count occurrences: ");
                 switch (mycol->column_type) {
-                    case UINT:
+                    case 1:
                         scanf("%u", &int_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, &int_val));
                         break;
-                    case INT:
+                    case 2:
                         scanf("%d", &int_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, &int_val));
                         break;
-                    case CHAR:
+                    case 3:
                         scanf(" %c", &char_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, &char_val));
                         break;
-                    case FLOAT:
+                    case 4:
                         scanf("%f", &float_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, &float_val));
                         break;
-                    case DOUBLE:
+                    case 5:
                         scanf("%lf", &double_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, &double_val));
                         break;
-                    case STRING:
+                    case 6:
                         scanf("%s", str_val);
                         printf("Occurrences: %u\n", count_occurrences(mycol, str_val));
                         break;
@@ -179,19 +181,19 @@ int part2() {
 
                 printf("Enter value to count greater values: ");
                 switch (mycol->column_type) {
-                    case UINT:
+                    case 1:
                         scanf("%u", &int_val);
                         printf("Greater values: %u\n", count_greater_than(mycol, &int_val));
                         break;
-                    case INT:
+                    case 2:
                         scanf("%d", &int_val);
                         printf("Greater values: %u\n", count_greater_than(mycol, &int_val));
                         break;
-                    case FLOAT:
+                    case 4:
                         scanf("%f", &float_val);
                         printf("Greater values: %u\n", count_greater_than(mycol, &float_val));
                         break;
-                    case DOUBLE:
+                    case 5:
                         scanf("%lf", &double_val);
                         printf("Greater values: %u\n", count_greater_than(mycol, &double_val));
                         break;
@@ -208,19 +210,19 @@ int part2() {
 
                 printf("Enter value to count lower values: ");
                 switch (mycol->column_type) {
-                    case UINT:
+                    case 1:
                         scanf("%u", &int_val);
                         printf("Lower values: %u\n", count_lower_than(mycol, &int_val));
                         break;
-                    case INT:
+                    case 2:
                         scanf("%d", &int_val);
                         printf("Lower values: %u\n", count_lower_than(mycol, &int_val));
                         break;
-                    case FLOAT:
+                    case 4:
                         scanf("%f", &float_val);
                         printf("Lower values: %u\n", count_lower_than(mycol, &float_val));
                         break;
-                    case DOUBLE:
+                    case 5:
                         scanf("%lf", &double_val);
                         printf("Lower values: %u\n", count_lower_than(mycol, &double_val));
                         break;
@@ -237,27 +239,27 @@ int part2() {
 
                 printf("Enter value to count equal values: ");
                 switch (mycol->column_type) {
-                    case UINT:
+                    case 1:
                         scanf("%u", &int_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, &int_val));
                         break;
-                    case INT:
+                    case 2:
                         scanf("%d", &int_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, &int_val));
                         break;
-                    case CHAR:
+                    case 3:
                         scanf(" %c", &char_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, &char_val));
                         break;
-                    case FLOAT:
+                    case 4:
                         scanf("%f", &float_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, &float_val));
                         break;
-                    case DOUBLE:
+                    case 5:
                         scanf("%lf", &double_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, &double_val));
                         break;
-                    case STRING:
+                    case 6:
                         scanf("%s", str_val);
                         printf("Equal values: %u\n", count_equal_to(mycol, str_val));
                         break;
