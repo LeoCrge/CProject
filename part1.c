@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Column.c"
-#include "CDataframe.c"
+#include "column/column.c"
+#include "cDataFrame/cDataFrame.c"
 
 #define REALLOC_SIZE 256
 

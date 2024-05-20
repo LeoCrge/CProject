@@ -3,8 +3,8 @@
 #include <string.h>
 
 // Include the header file containing function prototypes for COLUMN and CDATAFRAME
-#include "CDataframe.h"
-#include "Column.h"
+#include "column/column.h"
+#include "cDataFrame/cDataFrame.h"
 
 
 
