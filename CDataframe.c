@@ -28,16 +28,17 @@ CDATAFRAME *create_dataframe(int num_columns, int max_rows) {
 
 // Function to fill the CDATAFRAME with user input
 void fill_dataframe_user_input(CDATAFRAME *dataframe) {
-    if (!dataframe)
-        return;
+    if (dataframe == NULL) return;
     for (int i = 0; i < dataframe->num_columns; i++) {
-        COLUMN *col = dataframe->columns[i];
-        printf("Enter values for column %s:\n", col->title);
-        for (int j = 0; j < col->physical_size; j++) {
+        char title[100];
+        printf("Enter title for column %d: ", i+1);
+        scanf("%s", title);
+        dataframe->columns[i] = create_column(title);
+        for (int j = 0; j < dataframe->max_rows; j++) {
             int value;
-            printf("Enter value %d: ", j + 1);
+            printf("Enter value for column %d, row %d: ", i+1, j+1);
             scanf("%d", &value);
-            insert_value(col, value);
+            insert_value(dataframe->columns[i], value);
         }
     }
 }
