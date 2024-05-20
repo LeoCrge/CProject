@@ -51,7 +51,7 @@ int part1() {
         printf("1. COLUMN operations\n");
         printf("2. CDATAFRAME operations\n");
         printf("0. Exit\n");
-        printf("Enter your choice: ");
+        printf("Enter your choice: \n");
         scanf("%d", &choice);
         if (choice == 1) {
             while (1) {
@@ -117,7 +117,7 @@ int part1() {
                         }
                         printf("Enter a value to count greater values from \n");
                         scanf("%d", &y);
-                        printf("Values greater than %d : %d", y, val_greater_x(column, y));
+                        printf("Values greater than %d : %d \n", y, val_greater_x(column, y));
                         break;
                     case 8:
                         if (column == NULL) {
@@ -126,7 +126,7 @@ int part1() {
                         }
                         printf("Enter a value to count smaller values from \n");
                         scanf("%d", &y);
-                        printf("Values smaller than %d : %d", y, val_smaller_than(column, y));
+                        printf("Values smaller than %d : %d \n", y, val_smaller_than(column, y));
                         break;
                     case 9:
                         if (column == NULL) {
@@ -135,7 +135,7 @@ int part1() {
                         }
                         printf("Enter a value to count values equal to \n");
                         scanf("%d", &y);
-                        printf("Values equal to %d : %d", y, values_equal_to(column, y));
+                        printf("Values equal to %d : %d \n", y, values_equal_to(column, y));
                         break;
                     case 0:
                         if (column != NULL) {
@@ -253,9 +253,9 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter the column number to rename: ");
+                            printf("Enter the column number to rename: \n");
                             scanf("%d", &num_col);
-                            printf("Enter new title for the column: ");
+                            printf("Enter new title for the column: \n");
                             scanf("%s", new_title);
                             rename_column(cdataframe, num_col, new_title);
                             break;
@@ -264,7 +264,7 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter value to search: ");
+                            printf("Enter value to search: \n");
                             scanf("%d", &val);
                             printf("Value %d found %d times in the dataframe.\n", val, search_value(cdataframe, val));
                             break;
@@ -273,9 +273,9 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter row number: ");
+                            printf("Enter row number: \n");
                             scanf("%d", &num_row);
-                            printf("Enter column number: ");
+                            printf("Enter column number:  \n");
                             scanf("%d", &num_col);
                             printf("Value at cell (%d, %d): %d\n", num_row, num_col,
                                    value_at_cell(cdataframe, num_row, num_col));
@@ -306,7 +306,7 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter value to count cells equal to: ");
+                            printf("Enter value to count cells equal to:  \n");
                             scanf("%d", &val);
                             printf("Number of cells equal to %d: %d\n", value, cells_equal_to(cdataframe, val));
                             break;
@@ -315,7 +315,7 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter value to count cells greater than: ");
+                            printf("Enter value to count cells greater than:  \n");
                             scanf("%d", &val);
                             printf("Number of cells greater than %d: %d\n", value, cells_greater_than(cdataframe, val));
                             break;
@@ -324,7 +324,7 @@ int part1() {
                                 printf("Create a dataframe first.\n");
                                 break;
                             }
-                            printf("Enter value to count cells smaller than: ");
+                            printf("Enter value to count cells smaller than:  \n");
                             scanf("%d", &val);
                             printf("Number of cells smaller than %d: %d\n", value, cells_smaller_than(cdataframe, val));
                             break;
@@ -346,7 +346,7 @@ int part1() {
                 }
         }
         else{
-            printf("Enter either one or two");
+            printf("Enter either one or two \n");
         }
     return 0;
 }

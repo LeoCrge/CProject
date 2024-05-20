@@ -12,7 +12,7 @@ int main() {
     printf("1. Execute Project Part 1\n");
     printf("2. Execute Project Part 2\n");
     printf("0. Exit\n");
-    printf("Enter your choice: ");
+    printf("Enter your choice: \n");
     scanf("%d", &choice);
     switch (choice) {
         case 1:
