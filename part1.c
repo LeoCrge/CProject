@@ -7,12 +7,6 @@
 
 #define REALLOC_SIZE 256
 
-void menu1() {
-    int x;
-    printf("Menu for part 1 \n");
-    printf("Press 1 for our column part and 2 for our Cdataframe  \n");
-}
-
 void case1(){
     printf("1 - Create a column \n");
     printf("2 - Insert a value \n");
@@ -53,112 +47,111 @@ int part1() {
     COLUMN *column = NULL;
     CDATAFRAME *cdataframe = NULL;
     int *value = NULL;
-    while (1){
         printf("\nMain Menu:\n");
         printf("1. COLUMN operations\n");
         printf("2. CDATAFRAME operations\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        switch (choice) {
-            case 1:
-                while(1) {
-                    case1();
-                    printf("Enter your choice \n");
-                    scanf("%d", &choice);
-                    switch (choice) {
-                        case 1:
-                            printf("Enter the title of the column \n");
-                            scanf("%s", name);
-                            column = create_column(name);
-                            break;
-                        case 2:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter a value \n");
-                            scanf("%d", &val);
-                            if (insert_value(column, val)) {
-                                printf("Value successfully inserted \n");
-                            } else {
-                                printf("Failed to insert the value \n");
-                            }
-                            break;
-                        case 3:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            delete_column(&column);
-                            printf("The column has been deleted \n");
-                            break;
-                        case 4:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            print_col(column);
-                            break;
-                        case 5:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter a value to count \n");
-                            scanf("%d", &y);
-                            printf("Number of occurrences of %d: %d \n", y, num_occurrences(column, y));
-                            break;
-                        case 6:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter position to get value \n");
-                            scanf("%d", &y);
-                            printf("Value at position %d : %d \n", y, value_at_x(column, y));
-                            break;
-                        case 7:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter a value to count greater values from \n");
-                            scanf("%d", &y);
-                            printf("Values greater than %d : %d", y, val_greater_x(column, y));
-                            break;
-                        case 8:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter a value to count smaller values from \n");
-                            scanf("%d", &y);
-                            printf("Values smaller than %d : %d", y, val_smaller_than(column, y));
-                            break;
-                        case 9:
-                            if (column == NULL) {
-                                printf("Create a column first \n");
-                                break;
-                            }
-                            printf("Enter a value to count values equal to \n");
-                            scanf("%d", &y);
-                            printf("Values equal to %d : %d", y, values_equal_to(column, y));
-                            break;
-                        case 0:
-                            if (column != NULL) {
-                                delete_column(&column);
-                            }
-                            printf("Exciting program \n");
-                            exit(EXIT_SUCCESS);
-                        default:
-                            printf("Invalid choice. Please try again \n");
-                    }
-                    if (choice == 0)
+        if (choice == 1) {
+            while (1) {
+                case1();
+                printf("Enter your choice \n");
+                scanf("%d", &choice);
+                switch (choice) {
+                    case 1:
+                        printf("Enter the title of the column \n");
+                        scanf("%s", name);
+                        column = create_column(name);
                         break;
+                    case 2:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter a value \n");
+                        scanf("%d", &val);
+                        if (insert_value(column, val)) {
+                            printf("Value successfully inserted \n");
+                        } else {
+                            printf("Failed to insert the value \n");
+                        }
+                        break;
+                    case 3:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        delete_column(&column);
+                        printf("The column has been deleted \n");
+                        break;
+                    case 4:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        print_col(column);
+                        break;
+                    case 5:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter a value to count \n");
+                        scanf("%d", &y);
+                        printf("Number of occurrences of %d: %d \n", y, num_occurrences(column, y));
+                        break;
+                    case 6:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter position to get value \n");
+                        scanf("%d", &y);
+                        printf("Value at position %d : %d \n", y, value_at_x(column, y));
+                        break;
+                    case 7:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter a value to count greater values from \n");
+                        scanf("%d", &y);
+                        printf("Values greater than %d : %d", y, val_greater_x(column, y));
+                        break;
+                    case 8:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter a value to count smaller values from \n");
+                        scanf("%d", &y);
+                        printf("Values smaller than %d : %d", y, val_smaller_than(column, y));
+                        break;
+                    case 9:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        printf("Enter a value to count values equal to \n");
+                        scanf("%d", &y);
+                        printf("Values equal to %d : %d", y, values_equal_to(column, y));
+                        break;
+                    case 0:
+                        if (column != NULL) {
+                            delete_column(&column);
+                        }
+                        printf("Exciting program \n");
+                        exit(EXIT_SUCCESS);
+                    default:
+                        printf("Invalid choice. Please try again \n");
                 }
-                break;
-            case 2:
+                if (choice == 0)
+                    break;
+            }
+        }
+        else if (choice == 2){
+
                 while (1) {
                     case2();
                     printf("Enter your choice \n");
@@ -352,6 +345,8 @@ int part1() {
                     break;
                 }
         }
-    }
+        else{
+            printf("Enter either one or two");
+        }
     return 0;
 }
