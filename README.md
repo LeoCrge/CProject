@@ -53,6 +53,42 @@ The CDataframe aims to store data in columns, each consisting of a title and an 
 **4.1.4. Display the Column Content:**
 - Prints the content of a column, displaying row numbers and corresponding values.
 
+**4.2. The Cdataframe**
+
+**4.2.1. Functionalities**
+1. Filling
+2. Displaying
+3. Usual operations
+4. Analysis and statistics
+
+**Part II: An almost perfect CDataframe**
+
+**5. New structures :** We will allow the Cdataframe to store different types of data.
+
+**5.1. The column**
+- A column contains a title, an array of data and the type of data
+
+**5.1.1. Create a column**
+- This function creates a column with a title and type
+
+**5.1.2. Inserting a value in a column**
+- This function is used to insert a value of any type in a column 
+
+**5.1.3. Free memory allocated by a column**
+- This function deletes a column
+
+**5.1.4. Display a value**
+- This value displays a value by converting its type
+
+**5.1.5. Display the contents of a column**
+- This function prints a whole column
+
+**5.1.6 Other functions**
+- Operations turned functions
+
+**5.2 The Cdataframe**
+- See our Cdataframe from the first part
+
 **Project Submission:**
 - Final delivery is done on Moodle in the form of a .zip archive containing:
   - Project code with all .h and .c files.
