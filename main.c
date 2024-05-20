@@ -274,8 +274,7 @@ int main() {
             default:
                 printf("Invalid choice!\n");
         }
-        sleep(3);
-        printf("\n\n\n\n\n\n\n");
+
     }
 
     return 0;
