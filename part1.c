@@ -47,7 +47,7 @@ void case2(){
     printf("19 - Number of cells smaller than x \n");
 }
 
-int main() {
+int part1() {
     int choice, x, val, y, num_col, max_row, lim, num_row;
     char name[256], *new_title = NULL;
     COLUMN *column = NULL;

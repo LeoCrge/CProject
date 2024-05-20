@@ -76,7 +76,7 @@ void display_partial_rows(CDATAFRAME *dataframe, int limit) {
     printf("Partial CDATAFRAME (first %d rows):\n", limit);
     for (int i = 0; i < dataframe->num_columns; i++) {
         COLUMN *col = dataframe->columns[i];
-        printf("[%s]\n", col->title);
+        // printf("[%s]\n", col->title);
         for (int j = 0; j < limit && j < col->logical_size; j++) {
             printf("[%d] %d\n", j, col->data[j]);
         }

@@ -12,8 +12,8 @@
     - @param2 : Column title
     - @return : Pointer to the created column
 */
-COLUMN *create_column1(ENUM_TYPE type, char *title) {
-    COLUMN *new_column = (COLUMN *)malloc(sizeof(COLUMN));
+COLUMN1 *create_column1(ENUM_TYPE type, char *title) {
+    COLUMN1 *new_column = (COLUMN1 *)malloc(sizeof(COLUMN1));
     if (new_column == NULL) {
         printf("Memory allocation failed \n");
         exit(EXIT_FAILURE);
@@ -35,7 +35,7 @@ COLUMN *create_column1(ENUM_TYPE type, char *title) {
 * @param2: Pointer to the value to insert
 * @return: 1 if the value is correctly inserted, 0 otherwise
 */
-int insert_value1(COLUMN *col, void *value) {
+int insert_value1(COLUMN1 *col, void *value) {
     if (col->size == col->max_size) {
         col->max_size += REALLOC_SIZE;
         col->data = (COL_TYPE **)realloc(col->data, col->max_size * sizeof(COL_TYPE *));
@@ -89,7 +89,7 @@ int insert_value1(COLUMN *col, void *value) {
     return 1;
 }
 
-void delete_column1(COLUMN *col) {
+void delete_column1(COLUMN1 *col) {
     free(col->title);
     for (unsigned int i = 0; i < col->size; i++) {
         free(col->data[i]->string_value);
@@ -99,7 +99,7 @@ void delete_column1(COLUMN *col) {
     free(col);
 }
 
-void convert_value(COLUMN *col, unsigned long long int i, char *str, int size) {
+void convert_value(COLUMN1 *col, unsigned long long int i, char *str, int size) {
     if (i >= col->size) {
         snprintf(str, size, "Index out of bounds");
         return;
@@ -132,7 +132,7 @@ void convert_value(COLUMN *col, unsigned long long int i, char *str, int size) {
 
 }
 
-void print_column(COLUMN *col) {
+void print_column(COLUMN1 *col) {
     printf("Title: %s\n", col->title);
     printf("Values in the column:\n");
     for (unsigned int i = 0; i < col->size; i++) {
@@ -156,7 +156,7 @@ void print_column(COLUMN *col) {
     }
 }
 
-unsigned int count_occurrences(COLUMN *col, void *value) {
+unsigned int count_occurrences(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
@@ -185,14 +185,14 @@ unsigned int count_occurrences(COLUMN *col, void *value) {
     return count;
 }
 
-char *value_at_position(COLUMN *col, unsigned int position) {
+char *value_at_position(COLUMN1 *col, unsigned int position) {
     if (position < col->size) {
         return col->data[position]->string_value;
     }
     return NULL;
 }
 
-unsigned int count_greater_than(COLUMN *col, void *value) {
+unsigned int count_greater_than(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
@@ -215,7 +215,7 @@ unsigned int count_greater_than(COLUMN *col, void *value) {
     return count;
 }
 
-unsigned int count_lower_than(COLUMN *col, void *value) {
+unsigned int count_lower_than(COLUMN1 *col, void *value) {
     unsigned int count = 0;
     for (unsigned int i = 0; i < col->size; i++) {
         switch (col->column_type) {
@@ -238,6 +238,6 @@ unsigned int count_lower_than(COLUMN *col, void *value) {
     return count;
 }
 
-unsigned int count_equal_to(COLUMN *col, void *value) {
+unsigned int count_equal_to(COLUMN1 *col, void *value) {
     return count_occurrences(col, value);
 }
