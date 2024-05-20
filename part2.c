@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Union.c"
+#include "union/union.c"
 
 #define REALLOC_SIZE 256
 
@@ -63,7 +63,7 @@ int part2() {
                         break;
                     case CHAR:
                         printf("Enter char value: ");
-                        scanf(" %c", &char_val);
+                        scanf("%c", &char_val);
                         insert_value1(mycol, &char_val);
                         break;
                     case FLOAT:
