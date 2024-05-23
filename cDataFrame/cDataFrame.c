@@ -195,7 +195,7 @@ int number_rows(CDATAFRAME *dataframe) {
     if (dataframe == NULL) {
         return 0;
     }
-    return dataframe->num_rows;
+    return dataframe->max_rows;
 }
 
 // Function to display the number of column

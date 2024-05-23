@@ -43,7 +43,8 @@ void case2(){
 
 int part1() {
     int choice, x, val, y, num_col, max_row, lim, num_row;
-    char name[256], *new_title = NULL;
+    char name[256];
+    char new_title[256];
     COLUMN *column = NULL;
     CDATAFRAME *cdataframe = NULL;
     int *value = NULL;
@@ -308,7 +309,7 @@ int part1() {
                             }
                             printf("Enter value to count cells equal to:  \n");
                             scanf("%d", &val);
-                            printf("Number of cells equal to %d: %d\n", value, cells_equal_to(cdataframe, val));
+                            printf("Number of cells equal to %d: %d\n", val, cells_equal_to(cdataframe, val));
                             break;
                         case 18:
                             if (cdataframe == NULL) {
@@ -317,7 +318,7 @@ int part1() {
                             }
                             printf("Enter value to count cells greater than:  \n");
                             scanf("%d", &val);
-                            printf("Number of cells greater than %d: %d\n", value, cells_greater_than(cdataframe, val));
+                            printf("Number of cells greater than %d: %d\n", val, cells_greater_than(cdataframe, val));
                             break;
                         case 19:
                             if (cdataframe == NULL) {
@@ -326,7 +327,7 @@ int part1() {
                             }
                             printf("Enter value to count cells smaller than:  \n");
                             scanf("%d", &val);
-                            printf("Number of cells smaller than %d: %d\n", value, cells_smaller_than(cdataframe, val));
+                            printf("Number of cells smaller than %d: %d\n", val, cells_smaller_than(cdataframe, val));
                             break;
                         case 0:
                             if (cdataframe != NULL) {
