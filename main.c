@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "part1.h"
-#include "part2.h"
+#include "part1.c"
+#include "part2.c"
 
 int main() {
     int choice;
