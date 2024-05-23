@@ -2,10 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Include the header file containing function prototypes for COLUMN and CDATAFRAME
 #include "column/column.h"
 #include "cDataFrame/cDataFrame.h"
-
 
 
 // int main() {
