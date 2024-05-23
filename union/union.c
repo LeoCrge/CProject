@@ -150,7 +150,7 @@ void print_column(COLUMN1 *col) {
             case FLOAT:
             case DOUBLE:
             case STRING:
-                printf("aa %s\n", col->data[i]->string_value);
+                printf("%s\n", col->data[i]->string_value);
                 break;
             case STRUCTURE:
                 break;
