@@ -187,14 +187,6 @@ int number_rows(CDATAFRAME *dataframe) {
     return dataframe->num_rows;
 }
 
-// Function to display the number of column
-int number_columns(CDATAFRAME *dataframe) {
-    if (dataframe == NULL) {
-        return 0;
-    }
-    return dataframe->num_columns;
-}
-
 // Function to give the number of cells that are equal to a given value
 int cells_equal_to(CDATAFRAME *dataframe, int x) {
     if (dataframe == NULL) {
