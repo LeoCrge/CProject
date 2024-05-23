@@ -6,7 +6,6 @@
 
 #define REALLOC_SIZE 256
 
-//
 
 void menu() {
     printf("1 - Create a Column\n");
