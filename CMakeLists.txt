@@ -14,13 +14,8 @@ add_executable(CProject
         column/column.h
         list/list.c
         list/list.h
-        CDataframe.c
-        Column.c
-        testing.c
-        Union.h
-        Union.c
-        Union.c
         union/union.h
+        union/union.c
         main.c
         main.c
         main2.c
