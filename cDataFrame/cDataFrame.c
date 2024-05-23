@@ -179,12 +179,31 @@ int value_at_cell(CDATAFRAME *dataframe, int num_row, int num_col) {
     return dataframe->columns[num_col]->data[num_row];
 }
 
+// Function to display the names of the column
+void display_column_names(CDATAFRAME *dataframe) {
+    if (dataframe == NULL) {
+        return;
+    }
+    printf("Column names \n");
+    for (int i = 0; i < dataframe->num_columns; i++) {
+        printf("%s\n", dataframe->columns[i]->title);
+    }
+}
+
 // Function to display the number of rows
 int number_rows(CDATAFRAME *dataframe) {
     if (dataframe == NULL) {
         return 0;
     }
     return dataframe->num_rows;
+}
+
+// Function to display the number of column
+int number_columns(CDATAFRAME *dataframe) {
+    if (dataframe == NULL) {
+        return 0;
+    }
+    return dataframe->num_columns;
 }
 
 // Function to give the number of cells that are equal to a given value
