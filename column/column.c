@@ -112,3 +112,18 @@ int val_smaller_than(COLUMN*col, int x){
 }
 
 
+// Number of values equal to x
+int values_equal_to(COLUMN*col, int x){
+    int count=0;
+    if (col==NULL){
+        return 0;
+    }
+    for (int i=0; i<col->logical_size; i++){
+        if (x==col->data[i]){
+            count++;
+        }
+    }
+    return count;
+}
+
+
