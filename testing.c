@@ -10,9 +10,9 @@ int main() {
     COLUMN *temperature = create_column("Temperature");
 
     insert_value(temperature, 25);
-    insert_value(temperature, 28);
     insert_value(temperature, 30);
-    insert_value(temperature, 27);
+    insert_value(temperature, 30);
+    insert_value(temperature, 56);
     insert_value(temperature, 22);
 
     printf("Temperature column:\n");
