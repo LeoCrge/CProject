@@ -125,3 +125,12 @@ int values_equal_to(COLUMN*col, int x){
     return count;
 }
 
+// Function to modify the value at a specific index
+int modify_value_at_index(COLUMN *col, int index, int new_value) {
+    if (col == NULL || index < 0 || index >= col->logical_size) {
+        printf("Invalid index\n");
+        return 0;
+    }
+    col->data[index] = new_value;
+    return 1;
+}

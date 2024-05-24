@@ -17,6 +17,7 @@ void case1(){
     printf("7 - Number of value greater than x\n");
     printf("8 - Number of value smaller than x  \n");
     printf("9 - Number of values equal to  \n");
+    printf("10 - Convert value  \n");
 }
 
 void case2(){
@@ -137,6 +138,22 @@ int part1() {
                         printf("Enter a value to count values equal to \n");
                         scanf("%d", &y);
                         printf("Values equal to %d : %d \n", y, values_equal_to(column, y));
+                        break;
+                    case 10:
+                        if (column == NULL) {
+                            printf("Create a column first \n");
+                            break;
+                        }
+                        int index, new_value;
+                        printf("Enter the index to modify the value: \n");
+                        scanf("%d", &index);
+                        printf("Enter the new value: \n");
+                        scanf("%d", &new_value);
+                        if (modify_value_at_index(column, index, new_value)) {
+                            printf("Value at index %d modified to %d \n", index, new_value);
+                        } else {
+                            printf("Failed to modify value at index %d \n", index);
+                        }
                         break;
                     case 0:
                         if (column != NULL) {
