@@ -113,10 +113,13 @@ void add_row(CDATAFRAME *dataframe, int *values) {
 
 // Function to delete a row
 void delete_row(CDATAFRAME *dataframe, int num_row) {
-    if (dataframe == NULL || num_row < 0 || num_row > dataframe->num_rows) {
+    if (dataframe == NULL || num_row < 0 || num_row >= dataframe->num_rows) {
         return;
     }
     for (int i = 0; i < dataframe->num_columns; i++) {
+        // Optionally free memory for the deleted row element
+        free(dataframe->columns[i]->data[num_row]);
+
         for (int j = num_row; j < dataframe->num_rows - 1; j++) {
             dataframe->columns[i]->data[j] = dataframe->columns[i]->data[j + 1];
         }
@@ -134,16 +137,26 @@ void add_column(CDATAFRAME *dataframe, char *title) {
 }
 
 // Function to delete a column
-void delete_columns(CDATAFRAME *dataframe, int num_col) {
+void delete_column(CDATAFRAME *dataframe, int num_col) {
     if (dataframe == NULL || num_col < 0 || num_col >= dataframe->num_columns) {
         return;
     }
+
+    // Free the memory allocated for the column to be deleted
+    for (int i = 0; i < dataframe->num_rows; i++) {
+        free(dataframe->columns[num_col]->data[i]);
+    }
+    free(dataframe->columns[num_col]->data);
+    free(dataframe->columns[num_col]);
+
+    // Shift columns to the left to fill the gap
     for (int i = num_col; i < dataframe->num_columns - 1; i++) {
         dataframe->columns[i] = dataframe->columns[i + 1];
     }
+
+    // Decrease the column count
     dataframe->num_columns--;
 }
-
 // Function to rename a column
 void rename_column(CDATAFRAME *dataframe, int num_col, char *new_title) {
     if (dataframe == NULL || num_col < 0 || num_col >= dataframe->num_columns || new_title == NULL) {
