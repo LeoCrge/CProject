@@ -117,8 +117,6 @@ void delete_row(CDATAFRAME *dataframe, int num_row) {
         return;
     }
     for (int i = 0; i < dataframe->num_columns; i++) {
-        free(dataframe->columns[i]->data[num_row]);
-
         for (int j = num_row; j < dataframe->num_rows - 1; j++) {
             dataframe->columns[i]->data[j] = dataframe->columns[i]->data[j + 1];
         }
@@ -126,6 +124,8 @@ void delete_row(CDATAFRAME *dataframe, int num_row) {
     }
     dataframe->num_rows--;
 }
+
+
 
 // Function to add a column
 void add_column(CDATAFRAME *dataframe, char *title) {
