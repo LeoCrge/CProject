@@ -112,19 +112,19 @@ void add_row(CDATAFRAME *dataframe, int *values) {
 }
 
 // Function to delete a row
+
+
+
 void delete_row(CDATAFRAME *dataframe, int num_row) {
     if (dataframe == NULL || num_row < 0 || num_row >= dataframe->num_rows) {
         return;
     }
     for (int i = 0; i < dataframe->num_columns; i++) {
+        // Optionally free memory for the deleted row element
+        free(dataframe->columns[i]->data[num_row]);
+
         for (int j = num_row; j < dataframe->num_rows - 1; j++) {
             dataframe->columns[i]->data[j] = dataframe->columns[i]->data[j + 1];
-        }
-        dataframe->columns[i]->logical_size--;
-    }
-    dataframe->num_rows--;
-}
-
 
 
 // Function to add a column
